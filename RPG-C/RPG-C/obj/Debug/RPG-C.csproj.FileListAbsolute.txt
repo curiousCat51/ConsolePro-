@@ -1,0 +1,8 @@
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\bin\Debug\RPG-C.exe.config
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\bin\Debug\RPG-C.exe
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\bin\Debug\RPG-C.pdb
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\obj\Debug\RPG-C.csproj.AssemblyReference.cache
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\obj\Debug\RPG-C.csproj.CoreCompileInputs.cache
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\obj\Debug\RPG-C.exe
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\obj\Debug\RPG-C.pdb
+C:\Users\jfleer\Documents\GitHub\ConsolePro-\RPG-C\RPG-C\obj\Debug\RPG-C.exe.config
