@@ -1,0 +1,7 @@
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\bin\Debug\Number_guesser.exe.config
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\bin\Debug\Number_guesser.exe
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\bin\Debug\Number_guesser.pdb
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\obj\Debug\Number_guesser.csproj.AssemblyReference.cache
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\obj\Debug\Number_guesser.csproj.CoreCompileInputs.cache
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\obj\Debug\Number_guesser.exe
+C:\Users\jfleer\source\repos\curiousCat51\ConsolePro#\Number-guesser\Number_guesser\obj\Debug\Number_guesser.pdb

@@ -1,0 +1,8 @@
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\bin\Debug\Rock-Paper-Scissors.exe.config
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\bin\Debug\Rock-Paper-Scissors.exe
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\bin\Debug\Rock-Paper-Scissors.pdb
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\obj\Debug\Rock-Paper-Scissors.csproj.AssemblyReference.cache
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\obj\Debug\Rock-Paper-Scissors.csproj.CoreCompileInputs.cache
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\obj\Debug\Rock-Paper-Scissors.exe
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\obj\Debug\Rock-Paper-Scissors.pdb
+C:\Users\jfleer\Documents\GitHub\ConsolePro\Rock-Paper-Scissors\obj\Debug\Rock-Paper-Scissors.exe.config
