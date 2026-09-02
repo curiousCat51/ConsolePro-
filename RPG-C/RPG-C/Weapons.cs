@@ -18,7 +18,7 @@ namespace RPG_C
          * - Schaden multiplikator
          * - Mana multiplikator
          */
-        public Weapons(char type, double dmgAdd, string rarity = "uncommon")
+        public Weapons(char type, double dmgAdd, string rarity = "Ungewöhnlich")
         {
             this.type = type;
             this.dmgAdd= dmgAdd;

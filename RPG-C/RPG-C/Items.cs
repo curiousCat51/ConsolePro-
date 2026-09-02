@@ -26,7 +26,6 @@ namespace RPG_C
 
         public char getType(){ return type; }
         public void setType(char type) { this.type = type; }
-
         public double getEffect() { return effect; }
         public void setEffect(double effect) { this.effect = effect; }
 

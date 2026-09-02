@@ -14,5 +14,11 @@ namespace RPG_C
         {
 
         }
+
+        public static int NewRandom(int b, int a = 0)
+        {
+            Random rnd = new Random();
+            return rnd.Next(a, b + 1);
+        }
     }
 }
