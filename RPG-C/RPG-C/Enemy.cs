@@ -8,7 +8,7 @@ namespace RPG_C
 {
     internal class Enemy
     {
-        private char type = '-';
+        private string name;
         private double healthp = 0.0;
         private double armorp = 0.0;
         private double damage = 0.0;
@@ -19,16 +19,16 @@ namespace RPG_C
          * - Rüstung
          * - Schaden
          */
-        public Enemy(char type, double healthp, double armorp, double damage)
+        public Enemy(string name, double healthp, double armorp, double damage)
         {
-            this.type = type;
+            this.name = name;
             this.healthp = healthp;
             this.armorp = armorp;
             this.damage = damage;
         }
 
-        public char getType() { return type; }
-        public void setType(char type) { this.type = type; }
+        public string getName() { return name; }
+        public void setName(string name) { this.name = name; }
         public double getHealthp() { return healthp; }
         public void setHealthp(double healthp) { this.healthp = healthp; }
         public double getArmorp() {return armorp; }

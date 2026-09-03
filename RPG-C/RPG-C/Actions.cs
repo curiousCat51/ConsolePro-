@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace RPG_C
 {
@@ -16,6 +17,8 @@ namespace RPG_C
 
         public static void Explore()
         {
+            Console.Clear();
+            Console.Title = "Erkunden";
             // Mit hilfe von Random Aktionen wie Gegner, Waffe, Item erscheinen lassen oder alternativ nichts passiert (recovery)
             int result = Generate.NewRandom(4);
 
@@ -24,10 +27,8 @@ namespace RPG_C
             {
                 case 0:
                 {
-                    // Gegner erscheint
-                    result = Generate.NewRandom(3);
-                    // Liest die Informationen aus dem Objekt aus und übergibt diese an die Fight Methode
-                    Fight(enemyClass: Program.enemy.Keys.ElementAt(result), health: Program.enemy[Program.enemy.Keys.ElementAt(result)].getHealthp(), armor: Program.enemy[Program.enemy.Keys.ElementAt(result)].getArmorp(), damage: Program.enemy[Program.enemy.Keys.ElementAt(result)].getDamage());
+                    // Gegner erscheint und Kampf wird gestartet
+                    Fight();
                     break;
                 }
                 case 1:
@@ -101,75 +102,107 @@ namespace RPG_C
                     // Nichts passiert (recovery)
                     Console.WriteLine("\nNichts passiert, du erholst dich.");
                     Preparation.P1.setArmorp(Preparation.P1.getArmorp() + 5);
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
                 }
             }
+            Console.Clear();
         }
 
         public static int effectTurns = 0;
 
-        public static void Fight(string enemyClass, double health, double armor, double damage)
+        public static void Fight()
         {
-            string enemyClassName = enemyClass;
-            double enemyHealth = health;
-            double enemyArmor = armor;
-            double enemyDamage = damage;
+            int result = Generate.NewRandom(Program.enemy.Count);
+
+            string enemyClassName = Program.enemy.Keys.ElementAt(result);
+            double[] enemyStats = new double[]
+            {
+                Program.enemy[Program.enemy.Keys.ElementAt(result)].getHealthp(),
+                Program.enemy[Program.enemy.Keys.ElementAt(result)].getArmorp(),
+                Program.enemy[Program.enemy.Keys.ElementAt(result)].getDamage()
+            };
+
             string playerName = Preparation.P1.getName();
-            double playerHealth = Preparation.P1.getHealthp();
-            double playerArmor = Preparation.P1.getArmorp();
-            double playerDamage = Preparation.P1.getDamage();
+            double[] playerStats = new double[]
+            {
+                Preparation.P1.getHealthp(),
+                Preparation.P1.getArmorp(),
+                Preparation.P1.getDamage()
+            };
             string playerWeapon = Preparation.P1.getHand();
 
             bool playerTurn = true;
-            int choice;
-            
+            string choice;
+            bool validChoice;
+            int valChoice;
 
-            // Anzeige der Möglickeiten (Angriff, Verteidigung, Item benutzen, Fliehen)
+
             Console.Clear();
+            // Anzeige der Möglickeiten (Angriff, Verteidigung, Item benutzen, Fliehen)
             Console.WriteLine($"Ein {enemyClassName} erscheint!");
+
+            BattleStats(playerName, enemyClassName, enemyStats, playerStats, playerWeapon);
+            Menu.BattleMenu();
 
             do
             {
-                Preparation.VisualMenu(playerName, enemyClassName, playerHealth, enemyHealth, playerArmor, enemyArmor, playerWeapon);
+                
                 if (playerTurn)
                 {
-                    choice = Convert.ToInt32(Console.ReadLine());
-
-                    if (choice == 1)
+                    do
                     {
-                        // Angriff
-                        Console.WriteLine($"\nDu greifst den {enemyClassName} an und verursachst {playerDamage} Schaden!");
-                        if (playerDamage > enemyArmor && enemyArmor != 0)
+                        choice = Console.ReadLine();
+
+                        if (int.TryParse(choice, out valChoice) && valChoice < 1 || valChoice > 4)
                         {
-                            enemyHealth -= (playerDamage - enemyArmor);
-                            enemyArmor = 0;
+                            Console.WriteLine("Ungültige Eingabe. Bitte wähle eine Zahl zwischen 1 und 4.");
+                            valChoice = Convert.ToInt32(Console.ReadLine());
+                            validChoice = false;
                         }
                         else
                         {
-                            if(enemyArmor == 0)
+                            validChoice = true;
+                        }
+                    }while(!validChoice);
+
+
+                    if (valChoice == 1)
+                    {
+                        // Angriff
+                        Console.WriteLine($"\nDu greifst den {enemyClassName} an und verursachst {playerStats[2]} Schaden!");
+                        if (playerStats[2] > enemyStats[1] && enemyStats[1] != 0)
+                        {
+                            enemyStats[0] -= (playerStats[2] - enemyStats[1]);
+                            enemyStats[1] = 0;
+                        }
+                        else
+                        {
+                            if(enemyStats[1] == 0)
                             {
-                                enemyHealth -= playerDamage;
+                                enemyStats[0] -= playerStats[2];
                             }
                             else
                             {
-                                enemyArmor -= playerDamage;
+                                enemyStats[1] -= playerStats[2];
                             }
                                 
                         }
                     }
-                    else if (choice == 2)
+                    else if (valChoice == 2)
                     {
                         // Verteidigung
                         Console.WriteLine("\nDu verteidigst dich und erhöhst deine Rüstung um 5!");
-                        playerArmor += 5;
+                        playerStats[1] += 5;
                     }
-                    else if (choice == 3)
+                    else if (valChoice == 3)
                     {
                         // Item benutzen
                         Console.WriteLine("\nWähle ein Item aus deinem Inventar, das du benutzen möchtest (Nummer):");
                         UseItem();
                     }
-                    else if (choice == 4)
+                    else if (valChoice == 4)
                     {
                         // Fliehen + Chance nochmals getroffen zu werden
                         int fleeChance = Generate.NewRandom(1);
@@ -181,10 +214,10 @@ namespace RPG_C
                         else
                         {
                             Console.WriteLine("\nDu bist beim Fliehen getroffen worden!");
-                            playerHealth -= enemyDamage;
+                            playerStats[0] -= enemyStats[2];
                         }
 
-                        Preparation.P1.setHealthp(playerHealth);
+                        Preparation.P1.setHealthp(playerStats[0]);
                     }
 
                     // Effektdauer verringern und Effekt entfernen, wenn die Dauer abgelaufen ist
@@ -193,7 +226,7 @@ namespace RPG_C
                         effectTurns--;
                         if(effectTurns == 0)
                         {
-                            playerDamage -= Program.items[Program.inventory["Items"].Keys.ElementAt(choice - 1)].getEffect();
+                            playerStats[2] -= Program.items[Program.inventory["Items"].Keys.ElementAt(valChoice - 1)].getEffect();
                             Console.WriteLine("Der Effekt des Items ist abgelaufen.");
                         }
                     }
@@ -201,31 +234,35 @@ namespace RPG_C
                 else
                 {
                     // Gegnerischer Angriff
-                    if(enemyDamage > playerArmor && playerArmor != 0)
+                    if (enemyStats[2] > playerStats[2] && playerStats[2] != 0)
                     {
-                        playerHealth -= (enemyDamage - playerArmor);
-                        playerArmor = 0;
+                        playerStats[0] -= (enemyStats[2] - playerStats[1]);
+                        playerStats[1]= 0;
                     }
                     else
                     {
-                        if(playerArmor == 0)
+                        if (playerStats[1] == 0)
                         {
-                            playerHealth -= enemyDamage;
+                            playerStats[0] -= enemyStats[2];
                         }
                         else
                         {
-                            playerArmor -= enemyDamage;
+                            playerStats[1] -= enemyStats[2];
                         }
                            
                     }
 
-                    Preparation.P1.setHealthp(playerHealth);
-                    Preparation.P1.setArmorp(playerArmor);
+                    Preparation.P1.setHealthp(playerStats[0]);
+                    Preparation.P1.setArmorp(playerStats[1]);
 
-                    Console.WriteLine($"\nDer {enemyClassName} greift dich an und verursacht {enemyDamage} Schaden!");
+                    Console.WriteLine($"\nDer {enemyClassName} greift dich an und verursacht {enemyStats[2]} Schaden!");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    BattleStats(playerName, enemyClassName, enemyStats, playerStats, playerWeapon);
+                    Menu.BattleMenu();
                 }
                 playerTurn = !playerTurn;
-            } while(enemyHealth > 0 && playerHealth > 0);
+            } while (enemyStats[0] > 0 && playerStats[0] > 0);
 
             Console.WriteLine("Sie haben den Kampf gewonnen");
             Console.ReadKey();
@@ -234,6 +271,8 @@ namespace RPG_C
 
         public static void Examine(int result, int type)
         {
+            Console.Title = "Untersuchen";
+            Console.Clear();
             // Items und Waffen untersuchen
             if(type == 1)
             {
@@ -251,53 +290,68 @@ namespace RPG_C
 
                 Console.WriteLine($"\nName: {name}\nEffekt: {effect}\nEffektdauer: {duration}");
             }
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public static void UseItem()
         {
-            string input = "";
+            Console.Title = "Item benutzen";
+            Console.Clear();
+            string input;
             int itemIndex;
-            for(int i = 0; i < Program.inventory["Items"].Count; i++)
-            {
-                string itemName = Program.inventory["Items"].Keys.ElementAt(i);
-                int itemCount = Program.inventory["Items"][itemName];
-                Console.WriteLine($"{i + 1}. {itemName} (Anzahl: {itemCount})");
-            }
-            do
-            {
-                input = Console.ReadLine();
-            } while (!int.TryParse(input, out itemIndex));
 
-
-            // Überprüfen, ob der Index gültig ist und zu welchem Effekttypen das Item gehört (Schaden oder Heilung)
-            if (Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getType() == 'S')
-            {
-                // Schaden erhöhen
-                Preparation.P1.setDamage(Preparation.P1.getDamage() + (Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getEffect() * Preparation.P1.getDamage())); 
-                effectTurns = Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getDuration();
+            if (Program.inventory["Items"].Count == 0){
+                Console.WriteLine("\nKeine Items im Inventar");
             }
             else
             {
-                // Gesundheit erhöhen
-                Preparation.P1.setHealthp(Preparation.P1.getHealthp() + Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getEffect());
-                effectTurns = Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getDuration();
-            }
+                for(int i = 1; i <= Program.inventory["Items"].Count; i++)
+                {
+                    string itemName = Program.inventory["Items"].Keys.ElementAt(i);
+                    int itemCount = Program.inventory["Items"][itemName];
+                    Console.WriteLine($"{i + 1}. {itemName} (Anzahl: {itemCount})");
+                }
+                do
+                {
+                    input = Console.ReadLine();
+                } while (!int.TryParse(input, out itemIndex));
 
-            // Item aus dem Inventar entfernen
-            if (Program.inventory["Items"][Program.inventory["Items"].Keys.ElementAt(itemIndex)] == 1)
-            {
-                Program.inventory["Items"].Remove(Program.inventory["Items"].Keys.ElementAt(itemIndex));
+
+                // Überprüfen, ob der Index gültig ist und zu welchem Effekttypen das Item gehört (Schaden oder Heilung)
+                if (Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getName() == "S")
+                {
+                    // Schaden erhöhen
+                    Preparation.P1.setDamage(Preparation.P1.getDamage() + (Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getEffect() * Preparation.P1.getDamage()));
+                    effectTurns = Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getDuration();
+                }
+                else
+                {
+                    // Gesundheit erhöhen
+                    Preparation.P1.setHealthp(Preparation.P1.getHealthp() + Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getEffect());
+                    effectTurns = Program.items[Program.inventory["Items"].Keys.ElementAt(itemIndex)].getDuration();
+                }
+
+                // Item aus dem Inventar entfernen
+                if (Program.inventory["Items"][Program.inventory["Items"].Keys.ElementAt(itemIndex)] == 1)
+                {
+                    Program.inventory["Items"].Remove(Program.inventory["Items"].Keys.ElementAt(itemIndex));
+                }
+                else
+                {
+                    Program.inventory["Items"][Program.inventory["Items"].Keys.ElementAt(itemIndex)]--;
+                }
             }
-            else
-            {
-                Program.inventory["Items"][Program.inventory["Items"].Keys.ElementAt(itemIndex)]--;
-            }
+            Console.ReadKey();
+            Console.Clear();
         }
 
         public static void ChangeWeapon()
         {
+            Console.Title = "Waffe wechseln";
+            Console.Clear();
             // Ändert die Waffe in der Hand des Spielers
-            string input = "";
+            string input;
             int itemIndex;
             for (int i = 0; i < Program.inventory["Weapons"].Count; i++)
             {
@@ -307,10 +361,73 @@ namespace RPG_C
             }
             do
             {
-                input = Console.ReadLine();
-            } while (!int.TryParse(input, out itemIndex));
+                do
+                {
+                    input = Console.ReadLine();
+                } while (!int.TryParse(input, out itemIndex));
+            } while (itemIndex < 0 || itemIndex > Program.inventory["Weapons"].Count);
 
             Preparation.P1.setHand(Program.inventory["Weapons"].Keys.ElementAt(itemIndex - 1));
+
+            Console.Clear();
+        }
+
+        public static void ShowStats()
+        {
+            Console.Title = "Stats";
+            Console.Clear();
+            Console.WriteLine(
+                $"Name: {Preparation.P1.getName()}" +
+                $"\nGesundheit: {Preparation.P1.getHealthp()}" +
+                $"\nRüstung: {Preparation.P1.getArmorp()}" +
+                $"\nSchaden: {Preparation.P1.getDamage()}" +
+                $"\nWaffe in der Hand: {Preparation.P1.getHand()}");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void ShowInventory()
+        {
+            Console.Title = "Inventar";
+            Console.Clear();
+            Console.WriteLine("Inventar:");
+            foreach (var category in Program.inventory)
+            {
+                Console.WriteLine($"\n{category.Key}:");
+                foreach (var item in category.Value)
+                {
+                    Console.WriteLine($"- {item.Key} (Anzahl: {item.Value})");
+                }
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void Recover()
+        {
+            Console.Title = "Erholung";
+            Console.Clear();
+            Preparation.P1.setArmorp(Preparation.P1.getArmorp() + 5);
+            Console.WriteLine("Du erholst dich und deine Rüstung wird um 5 erhöht.");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        public static void BattleStats(string playerName, string enemyClassName, double[] enemyStats, double[] playerStats, string playerWeapon)
+        {
+            Console.WriteLine(
+                $"\n{playerName}" +
+                $"\nHP: {playerStats[0]}" +
+                $"\nAP: {playerStats[1]}" +
+                //$"\nMana: {playerStats[3]}" +
+                $"\n Weapon: {playerWeapon}" +
+                $"\n\n" +
+                $"\n{enemyClassName}" +
+                $"\nHP: {enemyStats[0]}" +
+                $"\nAP: {enemyStats[1]}" +
+                //$"\nMana: {enemyStats[3]}" +
+                $"\n-----------------------------------" +
+                $"\n");
         }
     }
 }

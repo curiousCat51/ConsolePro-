@@ -8,7 +8,7 @@ namespace RPG_C
 {
     internal class Weapons
     {
-        private char type = '-';
+        private string name = "";
         private string rarity = "";
         private double dmgAdd = 0.0;
         private double manaMultiplier = 0.0;
@@ -18,15 +18,16 @@ namespace RPG_C
          * - Schaden multiplikator
          * - Mana multiplikator
          */
-        public Weapons(char type, double dmgAdd, string rarity = "Ungewöhnlich")
+        public Weapons(string name, double dmgAdd, double manaMultiplier, string rarity = "Gewöhnlich")
         {
-            this.type = type;
+            this.name = name;
             this.dmgAdd= dmgAdd;
+            this.manaMultiplier = manaMultiplier;
             this.rarity = rarity;
         }
 
-        public char getType() { return type; }
-        public void setType(char type) { this.type = type; }
+        public string getName() { return name; }
+        public void setName(string name) { this.name = name; }
 
         public string getRarity() { return rarity; }
         public void setRarity(string rarity) { this.rarity = rarity; }

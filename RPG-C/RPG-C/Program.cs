@@ -11,25 +11,30 @@ namespace RPG_C
     {
         //Items
         public static Dictionary<string, Items> items = new Dictionary<string, Items> {
-            { "Schaden Trank", new Items('S',0.25, 3) },
-            { "Kleiner Lebenspunkte Trank", new Items('H', 50, 1) },
-            { "Großer Lebenspunkte Trank", new Items('H', 100, 1) }
+            { "Schadenstrank", new Items("S",0.25, 3) },
+            { "Kleiner Heiltrank", new Items("H", 50, 1) },
+            { "Großer Heiltrank", new Items("H", 100, 1) },
+            { "Mana Trank", new Items("M", 50, 1) },
+            { "Rüstungstrank", new Items("R", 0.25, 3) }
         };
 
         //Waffen
         public static Dictionary<string, Weapons> weapons = new Dictionary<string, Weapons>
         {
-            {"Legendaeres Schwert", new Weapons('S', 0.75, "Legendär") },
-            {"Kampfaxt", new Weapons('A', 0.5, "Episch") },
-            {"Alte Armbrust", new Weapons('B', 0.25, "Selten") }
+            { "Legendäres Ahnen Schwert", new Weapons("Legendäres Ahnen Schwert", 1.0, 2.5, "Legendär")},
+            { "Sturmbrecher", new Weapons("Sturmbrecher", 1.2, 1.5, "Episch")},
+            { "Alte Armbrust", new Weapons("Alte Armbrust", 0.8, 1.1, "Selten")},
+            { "Rostiger Dolch", new Weapons("Rostiger Dolch", 0.6, 1.0, "Gewöhnlich")}
         };
 
         //Gegner
         public static Dictionary<string, Enemy> enemy = new Dictionary<string, Enemy>
         {
-            {"Ork", new Enemy('O', 500, 100, 45) },
-            {"Riese", new Enemy('R', 1500, 250, 20) },
-            {"Kobold", new Enemy('K', 250, 10, 90) }
+            { "Goblin", new Enemy("Goblin", 500, 50, 50) },
+            { "Ork", new Enemy("Ork", 800, 100, 75) },
+            { "Troll", new Enemy("Troll", 1200, 150, 100) },
+            { "Dämon", new Enemy("Dämon", 1000, 200, 150) },
+            { "Drache", new Enemy("Drache", 3000, 250, 200) }
         };
 
         //Inventar
@@ -50,17 +55,17 @@ namespace RPG_C
              *  > Waffen
              * - Kampf-System
              */
+            bool success;
 
             // Standartwaffe
             inventory["Weapons"].Add("Alte Armbrust", 1);
 
-            Menu.VisualMenu();
+            Menu.GameStart();
             Console.Clear();
 
 
-            Preparation.PepareGame();
+            Preparation.CharacterCreation();
             Console.Clear();
-
             // Schleife für das Spiel
             do
             {
@@ -70,46 +75,55 @@ namespace RPG_C
                  * - Fliehen
                  * - Untersuchen (Ausgabe der Stats von Waffen und Items)
                  */
-                Console.Clear();
 
-                Console.WriteLine("Was möchten Sie tun?\n1. Erkunden\n2. Waffe wechseln\n3. Inventar anzeigen\n4. Erholen\n5. Item verwenden");
-                string choice = Console.ReadLine();
-                switch (choice)
+                do
                 {
-                    case "1":
-                        Actions.Explore();
-                        break;
-                    case "2":
-                        Actions.ChangeWeapon();
-                        break;
-                    case "3":
-                        Console.WriteLine("Inventar:");
-                        foreach (var category in inventory)
+                    Menu.ActionsMenu();
+                    string choice = Console.ReadLine();
+                    if(!string.IsNullOrEmpty(choice))
+                    {
+                        switch (choice)
                         {
-                            Console.WriteLine($"\n{category.Key}:");
-                            foreach (var item in category.Value)
-                            {
-                                Console.WriteLine($"- {item.Key} (Anzahl: {item.Value})");
-                            }
+                            case "1":
+                                Actions.Explore();
+                                success = true;
+                                break;
+                            case "2":
+                                Actions.Recover();
+                                success = true;
+                                break;
+                            case "3":
+                                Actions.ShowStats();
+                                success = true;
+                                break;
+                            case "4":
+                                Actions.ShowInventory();
+                                success = true;
+                                break;
+                            case "5":
+                                Actions.ChangeWeapon();
+                                success = true;
+                                break;
+                            case "6":
+                                Actions.UseItem();
+                                success = true;
+                                break;
+                            default:
+                                Console.WriteLine("Ungültige Eingabe. Bitte versuchen Sie es erneut.");
+                                success = false;
+                                break;
                         }
-                        Console.WriteLine("\nDrücken Sie eine beliebige Taste, um fortzufahren...");
-                        Console.ReadKey();
-                        break;
-                    case "4":
-                        Console.WriteLine("Du erholst dich und deine Rüstung wird um 100 erhöht.");
-                        Preparation.P1.setArmorp(Preparation.P1.getArmorp() + 100);
-                        break;
-                    case "5":
-                        Actions.UseItem();
-                        break;
-                    default:
-                        Console.WriteLine("Ungültige Eingabe. Bitte versuchen Sie es erneut.");
-                        break;
-                }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Die Eingabe darf nicht leer sein. Bitte versuchen Sie es erneut.");
+                        success = false;
+                    }
+                } while (!success);
             } while (alive);
 
             // Spielende
-            Preparation.GameOver();
+            Menu.GameOver();
         }
     }
 }
