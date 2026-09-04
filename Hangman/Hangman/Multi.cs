@@ -13,16 +13,59 @@ namespace Hangman
             Console.Write("You are in multi input mode, please enter a word (All letters are written in lower case): ");
             string word = Console.ReadLine();
 
-            if (Program.solution == word)
+            if (word != null && word.Length == Program.solution.Length)
             {
-                Console.WriteLine($"{word} is the correct word.");
-                Program.victory = true;
+                bool exact = word == Program.solution;
+
+                for (int i = 0; i < Program.solution.Length; i++)
+                {
+                    string solChar = Program.solution.Substring(i, 1);
+                    string wordChar = word.Substring(i, 1);
+
+                    if (wordChar == solChar)
+                    {
+                        if (!Program.Right.Contains(wordChar))
+                        {
+                            Program.Right.Add(wordChar);
+                        }
+                    }
+                    else
+                    {
+                        // If the guessed character exists anywhere in the solution, treat it as a correct letter (wrong position).
+                        if (Program.solution.Contains(wordChar))
+                        {
+                            if (!Program.Right.Contains(wordChar))
+                            {
+                                Program.Right.Add(wordChar);
+                            }
+                        }
+                        else
+                        {
+                            if (!Program.Wrong.Contains(wordChar))
+                            {
+                                Program.Wrong.Add(wordChar);
+                            }
+                        }
+                    }
+                }
+
+                if (exact)
+                {
+                    Console.WriteLine($"{word} is the correct word.");
+                    Program.victory = true;
+                }
+                else
+                {
+                    Console.WriteLine($"{word} is not the correct word.");
+                    mistakes += 2;
+                }
             }
             else
             {
-                Console.WriteLine($"{word} is not the correct word.");
+                Console.WriteLine($"{word} is too short.");
                 mistakes += 2;
             }
+
             return mistakes;
         }
     }

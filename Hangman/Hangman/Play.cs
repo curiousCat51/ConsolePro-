@@ -23,6 +23,8 @@ namespace Hangman
 
                 Console.WriteLine();
 
+                Program.hits = 0; // Reset hits before counting visible letters
+
                 for (int i = 0; i < so.Length; i++)
                 {
                     if (!Program.Wrong.Contains($"{so[i]}") && Program.Right.Contains($"{so[i]}"))

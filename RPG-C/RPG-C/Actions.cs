@@ -234,14 +234,14 @@ namespace RPG_C
                 else
                 {
                     // Gegnerischer Angriff
-                    if (enemyStats[2] > playerStats[2] && playerStats[2] != 0)
+                    if (enemyStats[2] > playerStats[1] && playerStats[1] != 0)
                     {
                         playerStats[0] -= (enemyStats[2] - playerStats[1]);
                         playerStats[1]= 0;
                     }
                     else
                     {
-                        if (playerStats[1] == 0)
+                        if (playerStats[1] >= 0)
                         {
                             playerStats[0] -= enemyStats[2];
                         }

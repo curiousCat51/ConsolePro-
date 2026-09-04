@@ -45,7 +45,7 @@ namespace Hangman
             } while (Console.ReadLine() == "y");
 
             Console.WriteLine("Shutting down...");
-
+            Console.ReadKey();
         }
     }
 }

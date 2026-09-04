@@ -1,7 +1,40 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|c:\\users\\jfleer\\documents\\github\\consolepro-\\rpg-c\\rpg-c\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:weapons.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\preparation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:preparation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\generate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:generate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DCEDCDAA-64ED-4813-8C36-1B67CFFB6893}|RPG-C.csproj|solutionrelative:items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +51,103 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Menu.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Menu.cs",
+              "RelativeDocumentMoniker": "Menu.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Menu.cs",
+              "RelativeToolTip": "Menu.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T06:50:28.421Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwHAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T06:39:39.13Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Actions.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Actions.cs",
+              "RelativeDocumentMoniker": "Actions.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Actions.cs",
+              "RelativeToolTip": "Actions.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAiwI0BAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T05:43:32.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Preparation.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Preparation.cs",
+              "RelativeDocumentMoniker": "Preparation.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Preparation.cs",
+              "RelativeToolTip": "Preparation.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwA4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T05:39:32.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Weapons.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Weapons.cs",
+              "RelativeDocumentMoniker": "Weapons.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Weapons.cs",
+              "RelativeToolTip": "Weapons.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T07:43:12.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Generate.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Generate.cs",
+              "RelativeDocumentMoniker": "Generate.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Generate.cs",
+              "RelativeToolTip": "Generate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T07:43:08.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Items.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Items.cs",
+              "RelativeDocumentMoniker": "Items.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Items.cs",
+              "RelativeToolTip": "Items.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T07:34:11.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Enemy.cs",
+              "RelativeDocumentMoniker": "Enemy.cs",
+              "ToolTip": "C:\\Users\\jfleer\\Documents\\GitHub\\ConsolePro-\\RPG-C\\RPG-C\\Enemy.cs",
+              "RelativeToolTip": "Enemy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAiwBcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-03T07:29:45.976Z"
             }
           ]
         }
